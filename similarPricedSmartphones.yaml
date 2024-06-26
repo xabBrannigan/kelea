@@ -1,0 +1,54 @@
+openapi: 3.0.0
+info:
+  title: Similar smartphone prices
+  version: '1.0'
+servers:
+  - url: 'http://localhost:5000'
+paths:
+  '/smartphones/{id}/similar':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      operationId: get-smartphones-similar-prices
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                 $ref: '#/components/schemas/SimilarSmartphones'
+        '404':
+          description: Smartphone Not found
+components:
+  schemas:
+    SimilarSmartphones:
+      type: array
+      description: 'List of similar priced smartphones to a given one'
+      minItems: 0
+      uniqueItems: true
+      items:
+        $ref: '#/components/schemas/SmartphoneDetail'
+    SmartphoneDetail:
+      description: 'Smartphone detail'
+      type: object
+      properties:
+        id:
+          type: string
+          minLength: 1
+        name:
+          type: string
+          minLength: 1
+        brand:
+          type: string
+          minLength: 1
+        price:
+          type: number
+      required:
+        - id
+        - name
+        - brand
+        - price

@@ -1,0 +1,75 @@
+openapi: 3.0.0
+info:
+  title: existingApis
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3001'
+paths:
+  '/smartphone/{smartphoneId}/similarpricedids':
+    parameters:
+      - schema:
+          type: string
+        name: smartphoneId
+        in: path
+        required: true
+    get:
+      operationId: get-smartphone-similar-priced-ids
+      summary: Gets the ids of the similar prices smartphones
+      description: Returns the similar smartphone ids to a given one.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SimilarSmartphones'
+  '/smartphone/{smartphoneId}':
+    parameters:
+      - schema:
+          type: string
+        name: smartphoneId
+        in: path
+        required: true
+    get:
+      operationId: get-smartphone-by-smartphoneId
+      summary: Gets a smartphone detail
+      description: Returns the smartphone detail for a given smartphoneId
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                 $ref: '#/components/schemas/SmartphoneDetail'
+        '404':
+          description: Smartphone Not found
+components:
+  schemas:
+    SimilarSmartphones:
+      type: array
+      description: 'List of similar smartphone Ids to a given one'
+      minItems: 0
+      uniqueItems: true
+      items:
+        type: string
+        example: ["1","2","3"]
+    SmartphoneDetail:
+      description: 'Smartphone detail'
+      type: object
+      properties:
+        id:
+          type: string
+          minLength: 1
+        name:
+          type: string
+          minLength: 1
+        brand:
+          type: string
+          minLength: 1
+        price:
+          type: number
+      required:
+        - id
+        - name
+        - brand
+        - price

@@ -1,0 +1,33 @@
+[
+  {
+    "path": "/smartphone/1/similarpricedids",
+    "body": "[2,3]",
+    "headers": {"Content-Type": "application/json"}
+  },
+  {
+    "path": "/smartphone/2/similarpricedids",
+    "body": "[3,1]",
+    "headers": {"Content-Type": "application/json"}
+  },
+  {
+    "path": "/smartphone/3/similarpricedids",
+    "body": "[1,2]",
+    "headers": {"Content-Type": "application/json"}
+  },
+  {
+    "path": "/smartphone/1",
+    "body": "{\"id\":\"1\",\"name\":\"Galaxy S23 Ultra\",\"price\":999.99,\"brand\":\"Samsung\"}",
+    "headers": {"Content-Type": "application/json"}
+  },
+  {
+    "path": "/smartphone/2",
+    "body": "{\"id\":\"2\",\"name\":\"12 pro\",\"price\":1099.99,\"brand\":\"Xiaomi\"}",
+    "headers": {"Content-Type": "application/json"}
+  },
+  {
+    "path": "/smartphone/3",
+    "body": "{\"message\":\"Smartphone not found\"}",
+    "status": 404,
+    "headers": {"Content-Type": "application/json"}
+  }
+]

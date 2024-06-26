@@ -1,0 +1,8 @@
+services:
+  mocks:
+    image : ldabiralai/simulado:latest
+    ports:
+      - "3001:80"
+    volumes:
+      - ./shared/mocks:/app
+    command: ./bin/simulado -f /app/mocks.json
